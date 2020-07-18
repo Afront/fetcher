@@ -1,18 +1,35 @@
+module URI
+  class HTTP
+  end
+end
+
+module Net
+  class HTTP
+  end
+
+  class HTTPResponse
+  end
+end
+
 module Benfalk
   class Fetcher
-    attr_reader urls: Array
+    attr_reader urls: Array[String]
     attr_reader retry_limit: Integer
-    # RetryLimitExceeded = Class.new(Exception)
-    # SERVER_ERROR_CODES = (500..599)
 
-    def initialize: (Array urls, ?Integer retry_limit) -> void
+    class RetryLimitExceeded < Exception
+    end
 
-    def call: () -> void
+    SERVER_ERROR_CODES: Range[Integer]
+
+    # retry_limit: 5
+    def initialize: (Array[String] urls, ?retry_limit: Integer) -> void
+
+    def call: () -> Array[Net::HTTPResponse]
 
     private
 
-    def fetch: (String uri) -> void
+    def fetch: (URI::HTTP uri) -> Net::HTTPResponse
 
-    def uris: () -> Array
+    def uris: () -> Array[URI::HTTP]
   end
 end
