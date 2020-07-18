@@ -1,0 +1,18 @@
+module Benfalk
+  class Fetcher
+    attr_reader urls: Array
+    attr_reader retry_limit: Integer
+    # RetryLimitExceeded = Class.new(Exception)
+    # SERVER_ERROR_CODES = (500..599)
+
+    def initialize: (Array urls, ?Integer retry_limit) -> void
+
+    def call: () -> void
+
+    private
+
+    def fetch: (String uri) -> void
+
+    def uris: () -> Array
+  end
+end
